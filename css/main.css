@@ -2,7 +2,9 @@
     box-sizing: border-box;
     /*padding: 0 !important; */
 }
-
+html {
+    scroll-behavior: smooth;
+}
 body {
     margin: 0;
     padding: 0;
@@ -29,6 +31,9 @@ body {
 }
 .header nav ul li {
     margin-right: 30px;
+}
+.nav-item.active .nav-link{
+    color: #292929 !important;
 }
 
 .header .header-info {
@@ -126,7 +131,7 @@ body {
 
 /* Start Service */
 .service {
-    
+    opacity: 0;
     margin-top: 55px;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 130px;
@@ -160,7 +165,7 @@ body {
 .about-me {
     background-color: #665E69;
     color:#fff;
-    
+    opacity: 0;
     text-align: center;
     padding: 80px 50px;
     
@@ -189,6 +194,7 @@ body {
 .skills{
     margin-top: 70px;
     text-align: center;
+    opacity: 0;
 }
 
 .skills h2 {
@@ -214,6 +220,7 @@ body {
 
 /* start Portfolio */
 .portfolio {
+    opacity: 0;
     margin-top: 80px;
     background-color: #665E69;
     padding-top: 70px;
@@ -298,10 +305,12 @@ opacity: 0.3;
 
 /* start Contact */
 .contact {
-    padding-top: 105px;
+    opacity: 0;
+    padding-top: 80px;
     overflow: hidden;
     position: relative;
-    height: 780px;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .contact h2 {
@@ -333,7 +342,10 @@ opacity: 0.3;
     margin-right: 100px;
 
 }
-
+.footer a {
+    text-decoration: none;
+    color: #fff;
+}
 .footer .media i {
     margin-left: 50px;
 }

@@ -1,21 +1,5 @@
 $(document).ready(function() {
     
-    const allSections = document.querySelectorAll('.header ul li');
-
-
-    function scrollSomeWhere (element){
-        element.forEach(element => {
-            element.addEventListener("click" , (e) => {
-                e.preventDefault();
-                document.querySelector(e.target.dataset.section).scrollIntoView({
-                    behavior : 'smooth'
-                });
-            });
-        });
-    }
-
-
-    scrollSomeWhere(allSections);
 
 
     // header typing effect 
@@ -66,7 +50,7 @@ $(document).ready(function() {
             var toRotate = elements[i].getAttribute('data-type');
             var period = elements[i].getAttribute('data-period');
             if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
+            new TxtType(elements[i], JSON.parse(toRotate), period);
             }
         }
         // INJECT CSS
@@ -75,4 +59,31 @@ $(document).ready(function() {
         css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #6D6D6D}";
         document.body.appendChild(css);
     };
+
+    // fade in for elements 
+     /* Every time the window is scrolled ... */
+        $(window).scroll( function(){
+    
+        /* Check the location of each desired element */
+        $('.hideme').each( function(i){
+            
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
+            
+            /* If the object is completely visible in the window, fade it it */
+            if( bottom_of_window > bottom_of_object ){
+                
+                $(this).animate({'opacity':'1'},1500);
+                    
+            }
+            
+        }); 
+    
+    });
+
+    // remove active from nav bar 
+    $(".nav-link").click(function(){
+        $(this).parent().addClass('active');
+        $(this).parent().siblings().removeClass('active');
+    });
 });
