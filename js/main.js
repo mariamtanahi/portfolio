@@ -60,30 +60,31 @@ $(document).ready(function() {
         document.body.appendChild(css);
     };
 
-    // fade in for elements 
-     /* Every time the window is scrolled ... */
-        $(window).scroll( function(){
     
-        /* Check the location of each desired element */
-        $('.hideme').each( function(i){
-            
-            var bottom_of_object = $(this).position().top + $(this).outerHeight();
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
-            
-            /* If the object is completely visible in the window, fade it it */
-            if( bottom_of_window > bottom_of_object ){
-                
-                $(this).animate({'opacity':'1'},1500);
-                    
-            }
-            
-        }); 
-    
-    });
-
     // remove active from nav bar 
     $(".nav-link").click(function(){
         $(this).parent().addClass('active');
         $(this).parent().siblings().removeClass('active');
     });
+
+    // fadein
+ 
+   
+
+const items = document.querySelectorAll('.appear2');
+
+const active = function(entries){
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+        entry.target.classList.add('inview2'); 
+        }else{
+            entry.target.classList.remove('inview2'); 
+        }
+    });
+}
+const io2 = new IntersectionObserver(active);
+ for(let i=0; i < items.length; i++){
+    io2.observe(items[i]);
+ }
+
 });

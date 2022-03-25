@@ -131,7 +131,7 @@ body {
 
 /* Start Service */
 .service {
-    opacity: 0;
+    
     margin-top: 55px;
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 130px;
@@ -165,7 +165,7 @@ body {
 .about-me {
     background-color: #665E69;
     color:#fff;
-    opacity: 0;
+    
     text-align: center;
     padding: 80px 50px;
     
@@ -194,7 +194,7 @@ body {
 .skills{
     margin-top: 70px;
     text-align: center;
-    opacity: 0;
+    
 }
 
 .skills h2 {
@@ -220,7 +220,7 @@ body {
 
 /* start Portfolio */
 .portfolio {
-    opacity: 0;
+    
     margin-top: 80px;
     background-color: #665E69;
     padding-top: 70px;
@@ -268,7 +268,7 @@ body {
 
 .portfolio .container .row .overlay {
     transition: .5s ease;
-    opacity: 0;
+    
     position: absolute;
     top: 50%;
     left: 50%;
@@ -305,7 +305,7 @@ opacity: 0.3;
 
 /* start Contact */
 .contact {
-    opacity: 0;
+    
     padding-top: 80px;
     overflow: hidden;
     position: relative;
@@ -588,6 +588,48 @@ opacity: 0.3;
     top: 40%;
     z-index: 100;
     left: 40%;
-    width: 15%;
+    width: 150px;
 
 }
+
+/* fade in  */
+.appear2 {
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+            transform: translateY(20px);
+  }
+  
+  .appear2.inview2 {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+  
+  .appear2.inview2:nth-child(1) {
+    -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+  }
+  
+  .appear2.inview2:nth-child(2) {
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+  }
+  
+  .appear2.inview2:nth-child(3) {
+    -webkit-transition-delay: 0.3s;
+            transition-delay: 0.3s;
+  }
+  
+  .appear2.inview2:nth-child(4) {
+    -webkit-transition-delay: 0.4s;
+            transition-delay: 0.4s;
+  }
+  
+  .appear2.inview2:nth-child(5) {
+    -webkit-transition-delay: 0.5s;
+            transition-delay: 0.5s;
+  }
+  
+  

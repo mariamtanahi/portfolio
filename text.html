@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <h1>Sample 1</h1>
+<p>Added fade-in animation on scroll for one container includes five items.</p>
+    <div class="container appear">
+
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+  
+
+<h1>Sample 2</h1>
+<p>Applied fade-in animation for every five-item.</p>
+    <div class="container">
+        <div class="item appear2">1</div>
+        <div class="item appear2">2</div>
+        <div class="item appear2">3</div>
+        <div class="item appear2">4</div>
+        <div class="item appear2">5</div>
+    </div>
+
+
+<h1>Sample 3</h1>
+<p>Fade-in animation won't repeate.</p>
+    <div class="container appear3">
+
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+  
+
+
+
+<h1>Spare space</h1>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+  <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+  
+    <script>
+   const appear = document.querySelector('.appear'); 
+const cb = function(entries){
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('inview');
+    }else{
+      entry.target.classList.remove('inview');
+    }
+  });
+}
+const io = new IntersectionObserver(cb);
+io.observe(appear);
+
+
+
+
+const items = document.querySelectorAll('.appear2');
+
+const active = function(entries){
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+        entry.target.classList.add('inview2'); 
+        }else{
+            entry.target.classList.remove('inview2'); 
+        }
+    });
+}
+const io2 = new IntersectionObserver(active);
+ for(let i=0; i < items.length; i++){
+    io2.observe(items[i]);
+ }
+
+
+const appear3 = document.querySelector('.appear3'); 
+const cb3 = function(entries){
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('inview');
+      entry.unobserve(entry.target)
+    }
+  });
+}
+const io3 = new IntersectionObserver(cb3);
+io3.observe(appear3);
+    </script>
+</body>
+</html>
