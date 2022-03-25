@@ -1,70 +1,78 @@
 $(document).ready(function() {
     
-    var ctx = $("#chart-line");
-    
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ["CSS", "BOOTSTRAP", "PHP & MYSQL", "JAVASCRIPT" , "JQUERY" , "HTML"],
-            datasets: [{
-                data: [700, 600, 400, 400, 400, 4000],
-                backgroundColor: ["#fff", "rgb(198 184 233 / 54%)",
-                                    "#fff", "rgb(198 184 233 / 54%)" , "#fff" , "rgb(198 184 233 / 54%)"],
-                
-                datalabels: {
-                    // anchor: 'end',
-                    color: '#707070',
-                    font: function(context) {
-                        var width = context.chart.width;
-                        var size = Math.round(width / 25);
-                         return {
-                           size: size,
-                          weight: "lighter",
-                          family:"'Montserrat', 'sans-serif'"
-                        };
-                      },
-                    rotation: [-20, -40 , -10 , 10 , 35, 0],
-                    formatter: function(value, context) {
-                        return context.chart.data.labels[context.dataIndex];
-                      }
-                  }
-            }],
-            
-        },
-
-      options: {
-        plugins: {
-            legend: {
-                display: false,
-               
-            },
-            tooltip: {
-                enabled: false,
-                
-            }
-        }
-    },
-    plugins: [ChartDataLabels],
-    
-        
-    });
+    const allSections = document.querySelectorAll('.header ul li');
 
 
-const allSections = document.querySelectorAll('.header ul li');
-
-
-function scrollSomeWhere (element){
-    element.forEach(element => {
-        element.addEventListener("click" , (e) => {
-            e.preventDefault();
-            document.querySelector(e.target.dataset.section).scrollIntoView({
-                behavior : 'smooth'
+    function scrollSomeWhere (element){
+        element.forEach(element => {
+            element.addEventListener("click" , (e) => {
+                e.preventDefault();
+                document.querySelector(e.target.dataset.section).scrollIntoView({
+                    behavior : 'smooth'
+                });
             });
         });
-    });
-}
+    }
 
 
-scrollSomeWhere(allSections);
+    scrollSomeWhere(allSections);
 
+
+    // header typing effect 
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #6D6D6D}";
+        document.body.appendChild(css);
+    };
 });
