@@ -14,14 +14,14 @@ body {
 }
 
 .header {
-    height: 800px;
+    height: 700px;
     overflow: hidden;
 }
 /* .header nav .navbar-brand img {
     width: 6%;
 } */
 .header .header-links {
-    margin-left: 20%;
+    margin-left: 12%;
 }
 .header nav ul {
     margin-right: 13%!important;
@@ -38,6 +38,7 @@ body {
 
 .header .header-info {
     margin-top: 40px;
+    text-align: center;
 }
 .header .container h1,
 .header .container h3 {
@@ -268,7 +269,7 @@ body {
 
 .portfolio .container .row .overlay {
     transition: .5s ease;
-    
+    opacity: 0;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -359,7 +360,7 @@ opacity: 0.3;
 @media (max-width : 575px){
     .header .header-img img  {
         top: 40px;
-        left: 70px;
+        left: 20%;
         width: 200px;
 
     }
@@ -425,8 +426,8 @@ opacity: 0.3;
         margin-top: 35px;
     }
     .header .header-img img {
-        top: 45px;
-        left: 0px;
+        top: 0px;
+        left: 7%px;
         width: 500px;
     }
 
@@ -498,8 +499,8 @@ opacity: 0.3;
     }
     .header .header-img img {
         position: absolute;
-        top: -50px;
-        left: 30px;
+        top: 0;
+        left: 15%;
         overflow: hidden;
         width: 500px;
     }
